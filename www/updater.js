@@ -115,14 +115,14 @@ H5AppFS.prototype.redirect = function () {
         } else {
             if (debug)
                 console.log('cached config version ' + version);
-            window.location.href = _self._system.root.toURL() + 'cache/www/' + _self.props.updaterredirect;
+            window.location.href = window.WkWebView.convertFilePath(_self._system.root.toURL() + 'cache/www/' + _self.props.updaterredirect);
         }
     });
 
     function redirectToEmbeddedWww(err) {
         if (debug)
             console.log('Fail to find cached www, redirect to embedded');
-        window.location.href = _self._applicationDirectory + '/www/' + _self.props.updaterredirect;
+        window.location.href = window.WkWebView.convertFilePath(_self._applicationDirectory + '/www/' + _self.props.updaterredirect);
     }
 };
 

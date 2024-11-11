@@ -18,6 +18,9 @@
  */
 ext.postBuildExtras = {
     def inAssetsDir = file("assets")
+    if (!inAssetsDir.exists()) {
+        inAssetsDir.mkdirs()                
+    }
     def outAssetsDir = inAssetsDir
     def outFile = new File(outAssetsDir, "cdvasset.manifest")
 

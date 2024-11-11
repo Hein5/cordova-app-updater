@@ -21,7 +21,8 @@ ext.postBuildExtras = {
     def outAssetsDir = inAssetsDir
     def outFile = new File(outAssetsDir, "cdvasset.manifest")
 
-    def newTask = task("cdvCreateAssetManifest") << {
+    def newTask = task("cdvCreateAssetManifest") {
+     doLast {
         def contents = new HashMap()
         def sizes = new HashMap()
         contents[""] = inAssetsDir.list(new FilenameFilter() {
@@ -49,6 +50,7 @@ ext.postBuildExtras = {
             oos.writeObject(contents)
             oos.writeObject(sizes)
         }
+     }
     }
     newTask.inputs.dir inAssetsDir
     newTask.outputs.file outFile
